@@ -25,9 +25,6 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "rules": {
-      "quotes": [2, "single", { "avoidEscape": true }]
     }
   }
 }
