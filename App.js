@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import { StyleSheet, View, Image, Text } from 'react-native'
 
@@ -34,6 +35,5 @@ const styles = StyleSheet.create({
   },
   img: {
     resizeMode: 'center'
-
   }
 })
