@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, Image, Text, Alert } from 'react-native'
 
-import main from '../loading/main';
 
 const LoadingScreen = (props) => {
     const [isOn, setIsOn] = useState(0);
@@ -14,15 +13,15 @@ const LoadingScreen = (props) => {
             <Image source={require('../assets/66.jpg')} resizeMode="cover" style={styles.image} />
             <Text style={styles.title}> F1 Reaction</Text>
             <View style={styles.big}>
-                {isOn == 0 && <Image source={require('../assets/no1.png')} style={styles.img} onLoad={() => { setTimeout(message, 500); }} />}
-                {isOn == 1 && <Image source={require('../assets/no2.png')} style={styles.img} onLoad={() => { setTimeout(message, 500); }} />}
-                {isOn == 2 && <Image source={require('../assets/no3.png')} style={styles.img} onLoad={() => { setTimeout(message, 500); }} />}
-                {isOn == 3 && <Image source={require('../assets/no4.png')} style={styles.img} onLoad={() => { setTimeout(message, 500); }} />}
-                {isOn == 4 && <Image source={require('../assets/no5.png')} style={styles.img} onLoad={() => { setTimeout(message, 500); }} />}
-                {isOn == 5 && <Image source={require('../assets/no6.png')} style={styles.img} />}
+                <Image source={require('../assets/no1.png')} style={styles.img} onLoad={() => { setTimeout(message, 500); }} />
+                {isOn == 1 && <Image source={require('../assets/b1.png')} style={styles.balls} onLoad={() => { setTimeout(message, 1000); }} />}
+                {isOn == 2 && <Image source={require('../assets/b2.png')} style={styles.balls} onLoad={() => { setTimeout(message, 1000); }} />}
+                {isOn == 3 && <Image source={require('../assets/b3.png')} style={styles.balls} onLoad={() => { setTimeout(message, 1000); }} />}
+                {isOn == 4 && <Image source={require('../assets/b4.png')} style={styles.balls} onLoad={() => { setTimeout(message, 1000); }} />}
+                {isOn == 5 && <Image source={require('../assets/b5.png')} style={styles.balls} onLoad={() => { setTimeout(message, 1000); }} />}
             </View>
             <View style={styles.myLightsOut}>
-                <Text style={styles.lightsOut}>Lights Out</Text>
+                {isOn > 5 && <Text style={styles.lightsOut}>Lights Out</Text>}
             </View>
         </View>
     );
@@ -69,6 +68,13 @@ const styles = StyleSheet.create({
     myLightsOut: {
         position: 'absolute',
         paddingTop: 620,
+    },
+    balls: {
+        position: 'absolute',
+        width: 831,
+        height: 511,
+        marginLeft: 34,
+        marginTop: 80,
     }
     //<Image source={require('../assets/66.jpg')} style={styles.image} />
 })
