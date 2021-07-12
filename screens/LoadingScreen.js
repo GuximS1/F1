@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         fontSize: 50,
         color: 'white',
         fontWeight: 'bold',
-        paddingTop: 20,
+        paddingTop: 40,
     },
     myLightsOut: {
         position: 'absolute',
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         marginTop: 80,
     },
     rf: {
-        marginTop: 10,
+        marginTop: 50,
         width: 128,
     }
 
