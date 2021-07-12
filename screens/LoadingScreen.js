@@ -1,15 +1,21 @@
 /* eslint-disable */
 import React, { useState } from 'react'
-import { StyleSheet, View, Image, Text } from 'react-native'
-import { color } from 'react-native-reanimated';
+import { StyleSheet, View, Image, Text, Alert } from 'react-native'
+
+import main from '../loading/main';
 
 const LoadingScreen = (props) => {
+    const message = () => {
+        Alert.alert('What up!');
+    }
     return (
         <View style={styles.container}>
             <Image source={require('../assets/66.jpg')} resizeMode="cover" style={styles.image} />
             <Text style={styles.title}> F1 Reaction</Text>
             <View style={styles.big}>
-                <Image source={require('../assets/no1.png')} style={styles.img} />
+                <Image source={require('../assets/no1.png')} style={styles.img} onLoad={() => {
+                    setTimeout(message, 3000);
+                }} />
             </View>
             <View style={styles.myLightsOut}>
                 <Text style={styles.lightsOut}>Lights Out</Text>
