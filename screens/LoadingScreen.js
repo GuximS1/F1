@@ -5,17 +5,21 @@ import { StyleSheet, View, Image, Text, Alert } from 'react-native'
 import main from '../loading/main';
 
 const LoadingScreen = (props) => {
+    const [isOn, setIsOn] = useState(0);
     const message = () => {
-        Alert.alert('What up!');
+        setIsOn(isOn + 1);
     }
     return (
         <View style={styles.container}>
             <Image source={require('../assets/66.jpg')} resizeMode="cover" style={styles.image} />
             <Text style={styles.title}> F1 Reaction</Text>
             <View style={styles.big}>
-                <Image source={require('../assets/no1.png')} style={styles.img} onLoad={() => {
-                    setTimeout(message, 3000);
-                }} />
+                {isOn == 0 && <Image source={require('../assets/no1.png')} style={styles.img} onLoad={() => { setTimeout(message, 500); }} />}
+                {isOn == 1 && <Image source={require('../assets/no2.png')} style={styles.img} onLoad={() => { setTimeout(message, 500); }} />}
+                {isOn == 2 && <Image source={require('../assets/no3.png')} style={styles.img} onLoad={() => { setTimeout(message, 500); }} />}
+                {isOn == 3 && <Image source={require('../assets/no4.png')} style={styles.img} onLoad={() => { setTimeout(message, 500); }} />}
+                {isOn == 4 && <Image source={require('../assets/no5.png')} style={styles.img} onLoad={() => { setTimeout(message, 500); }} />}
+                {isOn == 5 && <Image source={require('../assets/no6.png')} style={styles.img} />}
             </View>
             <View style={styles.myLightsOut}>
                 <Text style={styles.lightsOut}>Lights Out</Text>
