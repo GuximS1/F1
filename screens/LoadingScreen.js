@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { useState } from 'react'
 import { StyleSheet, View, Image, Text } from 'react-native'
+import { color } from 'react-native-reanimated';
 
 const LoadingScreen = (props) => {
     return (
@@ -9,6 +10,9 @@ const LoadingScreen = (props) => {
             <Text style={styles.title}> F1 Reaction</Text>
             <View style={styles.big}>
                 <Image source={require('../assets/no1.png')} style={styles.img} />
+            </View>
+            <View style={styles.myLightsOut}>
+                <Text style={styles.lightsOut}>Lights Out</Text>
             </View>
         </View>
     );
@@ -46,8 +50,16 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         position: 'absolute'
+    },
+    lightsOut: {
+        fontSize: 50,
+        color: 'white',
+        fontWeight: 'bold'
+    },
+    myLightsOut: {
+        position: 'absolute',
+        paddingTop: 620,
     }
-
     //<Image source={require('../assets/66.jpg')} style={styles.image} />
 })
 
