@@ -1,9 +1,11 @@
 /* eslint-disable */
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, View, Image, Text, ImageBackground, Button } from 'react-native'
 import LoadingScreen from './screens/LoadingScreen'
 
-export default function App(navigation) {
+export default function App() {
+
+
   return (
     <View style={styles.container}>
       <LoadingScreen />

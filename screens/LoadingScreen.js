@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, View, Image, Text, ImageBackground, Button } from 'react-native'
 
 const LoadingScreen = (props) => {
