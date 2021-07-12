@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useState } from 'react'
-import { StyleSheet, View, Image, Text, ImageBackground, Button } from 'react-native'
+import { StyleSheet, View, Image, Text } from 'react-native'
 
 const LoadingScreen = (props) => {
     return (
@@ -9,9 +9,6 @@ const LoadingScreen = (props) => {
             <Text style={styles.title}> F1 Reaction</Text>
             <View style={styles.big}>
                 <Image source={require('../assets/no1.png')} style={styles.img} />
-            </View>
-            <View style={styles.button}>
-                <Button title="Start Game" />
             </View>
         </View>
     );
@@ -30,7 +27,7 @@ const styles = StyleSheet.create({
         fontSize: 50,
         textAlign: 'center',
         fontWeight: 'bold',
-        paddingBottom: 600,
+        paddingBottom: 530,
         paddingRight: 10,
         color: 'red',
         textShadowColor: 'black',
@@ -44,12 +41,6 @@ const styles = StyleSheet.create({
     big: {
         maxWidth: '10%',
         paddingRight: 850,
-        marginTop: 150,
-    },
-    button: {
-        width: 200,
-        marginBottom: 200,
-        borderWidth: 2,
     },
     image: {
         flex: 1,
