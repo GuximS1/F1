@@ -21,7 +21,9 @@ const LoadingScreen = (props) => {
                 {isOn == 5 && <Image source={require('../assets/b5.png')} style={styles.balls} onLoad={() => { setTimeout(message, 1000); }} />}
             </View>
             <View style={styles.myLightsOut}>
+                {isOn > 5 && <Image source={require('../assets/rsz_rf1.png')} style={styles.rf} />}
                 {isOn > 5 && <Text style={styles.lightsOut}>Lights Out</Text>}
+                {isOn > 5 && <Image source={require('../assets/rsz_rf2.png')} style={styles.rf} />}
             </View>
         </View>
     );
@@ -63,11 +65,14 @@ const styles = StyleSheet.create({
     lightsOut: {
         fontSize: 50,
         color: 'white',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        paddingTop: 20,
     },
     myLightsOut: {
         position: 'absolute',
         paddingTop: 620,
+        flex: 1,
+        flexDirection: 'row',
     },
     balls: {
         position: 'absolute',
@@ -75,8 +80,12 @@ const styles = StyleSheet.create({
         height: 511,
         marginLeft: 34,
         marginTop: 80,
+    },
+    rf: {
+        marginTop: 10,
+        width: 128,
     }
-    //<Image source={require('../assets/66.jpg')} style={styles.image} />
+
 })
 
 export default LoadingScreen;
