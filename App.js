@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, Button, } from 'react-native'
 import LoadingScreen from './screens/LoadingScreen'
-
+import GameScreen from './screens/GameScreen';
 export default function App() {
 
   const [isAvailable, setIsAvailable] = useState(true);
@@ -14,6 +14,7 @@ export default function App() {
     <View style={styles.container}>
       {isAvailable && <LoadingScreen />}
       {isAvailable && Hello}
+      {!isAvailable && <GameScreen />}
     </View>
   )
 }
