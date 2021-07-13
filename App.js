@@ -5,17 +5,9 @@ import LoadingScreen from './screens/LoadingScreen'
 import GameScreen from './screens/GameScreen';
 export default function App() {
 
-  const [isAvailable, setIsAvailable] = useState(true);
-  const [enabled, setEnabled] = useState(false);
-  const availableHandler = () => {
-    setIsAvailable(false);
-  }
-  const Hello = <View style={styles.button}><Button title="Start Game" onPress={() => availableHandler()} /></View>;
   return (
-    <View style={styles.container} >
-      {isAvailable && <LoadingScreen />}
-      {isAvailable && Hello}
-      {!isAvailable && <GameScreen />}
+    <View style={styles.container}  >
+      <LoadingScreen />
     </View>
   )
 }
@@ -29,12 +21,7 @@ const styles = StyleSheet.create({
     fontSize: 50,
     position: 'absolute'
   },
-  button: {
-    width: 450,
-    justifyContent: 'center',
-    borderWidth: 2,
-    maxWidth: '100%',
-  },
+
 
 })
 
