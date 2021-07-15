@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
     img: {
         resizeMode: 'contain',
         width: 900,
-
     },
     big: {
         maxWidth: '10%',
