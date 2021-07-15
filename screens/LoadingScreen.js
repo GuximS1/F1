@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: 831,
         height: 511,
-        marginLeft: 34,
+        marginLeft: 34.5,
         marginTop: 80,
     },
     rf: {
