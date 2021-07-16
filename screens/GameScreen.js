@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     bestTime: {
         color: 'white',
         fontSize: 30,
+        fontWeight: 'bold'
     },
     timing: {
         position: 'absolute',
