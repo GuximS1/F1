@@ -18,6 +18,7 @@ const GameScreen = () => {
     return (
         <View style={styles.container}>
             <Image source={require('../assets/redbackground.jpg')} resizeMode="cover" style={styles.image} />
+            <View style={styles.timing}><Text style={styles.bestTime}>Best Time</Text></View>
             <View style={styles.big}>
                 <Image source={require('../assets/no1.png')} style={styles.img} />
                 {isOn1 == 1 && <Image source={require('../assets/b1.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
@@ -70,6 +71,17 @@ const styles = StyleSheet.create({
         marginTop: 120,
 
     },
+    bestTime: {
+        color: 'white',
+        fontSize: 30,
+    },
+    timing: {
+        position: 'absolute',
+        paddingBottom: 660,
+        width: '80%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 
 })
 export default GameScreen;

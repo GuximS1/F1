@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { useState } from 'react'
 import { StyleSheet, View, Image, Text, Alert, Button, BackHandler, Modal } from 'react-native'
-import AlertComponent from './AlertComponent';
+
 import GameScreen from './GameScreen';
 
 
@@ -42,7 +42,47 @@ const LoadingScreen = (props) => {
                 </View>
                 {Hello}
                 {Instructions}
-                {instr && <AlertComponent />}
+                <Modal visible={instr}>
+                    <View style={styles.mainContainer}>
+                        <View style={styles.topPart}>
+                            <Image source={require('../assets/library.png')} resizeMode={'contain'} style={styles.alertIconStyle} />
+                            <Text style={styles.alertTitleTextStyle}>Game Instructions!</Text>
+                        </View>
+                        <View style={styles.middlePart}>
+                            <Text style={styles.alertMessageTextStyle}>
+                                -"Start Game" button loads the game screen.
+                            </Text>
+                            <Text style={styles.alertMessageTextStyle}>
+                                -"Press to Start" button starts the game.
+                            </Text>
+                            <Text style={styles.alertMessageTextStyle}>
+                                -Five red lights need to go out in order for the timer to start.
+                            </Text>
+                            <Text style={styles.alertMessageTextStyle}>
+                                -If you react before the five red lights go out you are disqualified.
+                            </Text>
+                            <Text style={styles.alertMessageTextStyle}>
+                                -In order to react after the five red lights go out, you need to press the "Lights Out" button.
+                            </Text>
+                            <Text style={styles.alertMessageTextStyle}>
+                                -The fastest time reaction that you are going to have is going to show on top of the screen.
+                            </Text>
+                            <Text style={styles.alertMessageTextStyle}>
+                                -If you don't have a time reaction registered it's going to write "NO TIME" at the top of the screen.
+                            </Text>
+                            <Text style={styles.alertMessageTextStyle}>
+                                -By pressing the "Quit" button you exit the game.
+                            </Text>
+                            <Text style={styles.alertMessageTextStyle}>
+                                -Make sure to enjoy and always react after the red lights :)
+                            </Text>
+
+                        </View>
+                        <View style={styles.bottomPart} >
+                            <Button title="Back Home" onPress={() => setInstr(false)} />
+                        </View>
+                    </View>
+                </Modal>
                 {Quit}
             </View>
         );
@@ -131,7 +171,73 @@ const styles = StyleSheet.create({
         backgroundColor: 'red',
         color: 'red'
     },
-
+    mainContainer: {
+        position: 'absolute',
+        flexDirection: 'column',
+        height: '100%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#484048',
+        padding: 4,
+    },
+    topPart: {
+        flex: 0.5,
+        width: '100%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: 4,
+        paddingVertical: -30,
+    },
+    middlePart: {
+        flex: 1,
+        width: '100%',
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        padding: 4,
+        color: '#FFFFFF',
+        fontSize: 16,
+        marginVertical: -40,
+    },
+    bottomPart: {
+        flex: 0.08,
+        width: '100%',
+        flexDirection: 'row',
+        padding: 4,
+        justifyContent: 'center',
+        paddingBottom: 15,
+    },
+    alertIconStyle: {
+        height: 40,
+        width: 40,
+    },
+    alertTitleTextStyle: {
+        flex: 1,
+        textAlign: 'center',
+        color: '#00E1FF',
+        fontSize: 38,
+        fontWeight: 'bold',
+        padding: 2,
+        marginHorizontal: 2
+    },
+    alertMessageButtonStyle: {
+        paddingHorizontal: 6,
+        marginVertical: 4,
+        borderRadius: 10,
+        backgroundColor: '#80BFFF',
+        justifyContent: 'center'
+    },
+    alertMessageTextStyle: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#FFFFFF'
+    },
+    alertMessageTextStyle: {
+        color: '#FFFFFF',
+        textAlign: 'justify',
+        fontSize: 18,
+        padding: 2,
+    }
 
 })
 
