@@ -5,11 +5,13 @@ import { View, Text, StyleSheet, Image, Button } from 'react-native';
 const GameScreen = () => {
     const [isOn1, setIsOn1] = useState(0);
     const [isAvailable1, setIsAvailable1] = useState(true);
+    const [myTitle, setMyTitle] = useState("PRESS TO START");
     const availableHandler1 = () => {
         setIsAvailable(false);
     }
     const Hello = <View style={styles.button}><Button title="Start Game" onPress={() => availableHandler()} /></View>;
     const message1 = () => {
+        setMyTitle("LIGHTS OUT");
         setIsOn1(isOn1 + 1);
     }
 
@@ -26,7 +28,7 @@ const GameScreen = () => {
             </View>
             <Text style={styles.time}>0.00 ms</Text>
             <View style={styles.btn}>
-                <Button title="Press To Start" onPress={() => { setTimeout(message1, 1000); }} />
+                <Button title={myTitle} onPress={() => { setTimeout(message1, 0); }} />
             </View>
         </View>
     );

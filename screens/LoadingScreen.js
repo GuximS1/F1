@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useState } from 'react'
-import { StyleSheet, View, Image, Text, Alert, Button } from 'react-native'
+import { StyleSheet, View, Image, Text, Alert, Button, BackHandler, Modal } from 'react-native'
 import GameScreen from './GameScreen';
 
 
@@ -10,7 +10,22 @@ const LoadingScreen = (props) => {
     const availableHandler = () => {
         setIsAvailable(false);
     }
-    const Hello = <View style={styles.button}><Button title="Start Game" onPress={() => availableHandler()} /></View>;
+    const backAction = () => {
+        Alert.alert("Quit!", "Are you sure you want to quit the game?", [
+            {
+                text: "Cancel",
+                onPress: () => null,
+                style: "cancel"
+            },
+            { text: "YES", onPress: () => BackHandler.exitApp() }
+        ]);
+        return true;
+    };
+
+
+    const Hello = <View style={styles.button}><Button title="Start Game" color="green" onPress={() => availableHandler()} /></View>;
+    const Instructions = <View style={styles.instructions}><Button title="Instructions" onPress={() => gameInstructions()} /></View>;
+    const Quit = <View style={styles.quit}><Button title="Quit" color='red' onPress={() => backAction()} /></View>;
     const message = () => {
         setIsOn(isOn + 1);
     }
@@ -19,21 +34,14 @@ const LoadingScreen = (props) => {
             <View style={styles.container}>
                 <Image source={require('../assets/66.jpg')} resizeMode="cover" style={styles.image} />
                 <Text style={styles.title}> F1 Reaction</Text>
-                <View style={styles.big}>
-                    <Image source={require('../assets/no1.png')} style={styles.img} onLoad={() => { setTimeout(message, 500); }} />
-                    {isOn == 1 && <Image source={require('../assets/b1.png')} style={styles.balls} onLoad={() => { setTimeout(message, 1000); }} />}
-                    {isOn == 2 && <Image source={require('../assets/b2.png')} style={styles.balls} onLoad={() => { setTimeout(message, 1000); }} />}
-                    {isOn == 3 && <Image source={require('../assets/b3.png')} style={styles.balls} onLoad={() => { setTimeout(message, 1000); }} />}
-                    {isOn == 4 && <Image source={require('../assets/b4.png')} style={styles.balls} onLoad={() => { setTimeout(message, 1000); }} />}
-                    {isOn == 5 && <Image source={require('../assets/b5.png')} style={styles.balls} onLoad={() => { setTimeout(message, 1000); }} />}
-                </View>
                 <View style={styles.myLightsOut}>
-                    {isOn > 5 && <Image source={require('../assets/rsz_rf1.png')} style={styles.rf} />}
-                    {isOn > 5 && <Text style={styles.lightsOut}>Lights Out</Text>}
-                    {isOn > 5 && <Image source={require('../assets/rsz_rf2.png')} style={styles.rf} />}
-                </View>
-                <View>{isOn > 5 && Hello}</View>
+                    <Image source={require('../assets/rsz_rf1.png')} style={styles.rf1} />
 
+                    <Image source={require('../assets/rsz_rf2.png')} style={styles.rf} />
+                </View>
+                {Hello}
+                {Instructions}
+                {Quit}
             </View>
         );
     }
@@ -84,7 +92,7 @@ const styles = StyleSheet.create({
     },
     myLightsOut: {
         position: 'absolute',
-        paddingTop: 610,
+        paddingTop: 605,
         flex: 1,
         flexDirection: 'row',
     },
@@ -96,15 +104,30 @@ const styles = StyleSheet.create({
         marginTop: 80,
     },
     rf: {
-        marginTop: 50,
+        marginTop: 100,
         width: 128,
+        marginLeft: 227,
     },
     button: {
         width: 450,
         justifyContent: 'center',
         maxWidth: '50%',
-        marginTop: 710,
+        marginTop: 640,
     },
+    rf1: {
+        marginTop: 100,
+    },
+    instructions: {
+        width: 230,
+        marginTop: 10,
+    },
+    quit: {
+        width: 120,
+        marginTop: 10,
+        backgroundColor: 'red',
+        color: 'red'
+    },
+
 
 })
 
