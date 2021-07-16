@@ -1,12 +1,13 @@
 /* eslint-disable */
 import React, { useState } from 'react'
 import { StyleSheet, View, Image, Text, Alert, Button, BackHandler, Modal } from 'react-native'
+import AlertComponent from './AlertComponent';
 import GameScreen from './GameScreen';
 
 
 const LoadingScreen = (props) => {
-    const [isOn, setIsOn] = useState(0);
     const [isAvailable, setIsAvailable] = useState(true);
+    const [instr, setInstr] = useState(false);
     const availableHandler = () => {
         setIsAvailable(false);
     }
@@ -21,26 +22,27 @@ const LoadingScreen = (props) => {
         ]);
         return true;
     };
+    const gameInstructions = () => {
+        setInstr(true);
+    }
 
 
     const Hello = <View style={styles.button}><Button title="Start Game" color="green" onPress={() => availableHandler()} /></View>;
     const Instructions = <View style={styles.instructions}><Button title="Instructions" onPress={() => gameInstructions()} /></View>;
     const Quit = <View style={styles.quit}><Button title="Quit" color='red' onPress={() => backAction()} /></View>;
-    const message = () => {
-        setIsOn(isOn + 1);
-    }
     if (isAvailable) {
         return (
             <View style={styles.container}>
                 <Image source={require('../assets/66.jpg')} resizeMode="cover" style={styles.image} />
                 <Text style={styles.title}> F1 Reaction</Text>
+                <Image source={require('../assets/f1.png')} style={styles.img} />
                 <View style={styles.myLightsOut}>
                     <Image source={require('../assets/rsz_rf1.png')} style={styles.rf1} />
-
                     <Image source={require('../assets/rsz_rf2.png')} style={styles.rf} />
                 </View>
                 {Hello}
                 {Instructions}
+                {instr && <AlertComponent />}
                 {Quit}
             </View>
         );
@@ -63,7 +65,7 @@ const styles = StyleSheet.create({
         fontSize: 50,
         textAlign: 'center',
         fontWeight: 'bold',
-        paddingBottom: 530,
+        paddingBottom: 580,
         paddingRight: 10,
         color: 'red',
         textShadowColor: 'black',
@@ -73,6 +75,8 @@ const styles = StyleSheet.create({
     img: {
         resizeMode: 'contain',
         width: 900,
+        height: 480,
+        position: 'absolute',
     },
     big: {
         maxWidth: '10%',
