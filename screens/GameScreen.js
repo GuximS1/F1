@@ -7,7 +7,7 @@ const GameScreen = () => {
     const [isAvailable1, setIsAvailable1] = useState(true);
     const [myTitle, setMyTitle] = useState("PRESS TO START");
     const availableHandler1 = () => {
-        setIsAvailable(false);
+        setIsAvailable1(false);
     }
     const Hello = <View style={styles.button}><Button title="Start Game" onPress={() => availableHandler()} /></View>;
     const message1 = () => {

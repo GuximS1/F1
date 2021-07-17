@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, Button, Alert, } from 'react-native'
 import LoadingScreen from './screens/LoadingScreen'
-import GameScreen from './screens/GameScreen';
+import 'react-native-gesture-handler';
 export default function App() {
 
   return (
