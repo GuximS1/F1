@@ -1,8 +1,11 @@
 /* eslint-disable */
 import React, { useState } from 'react'
 import { StyleSheet, View, Button, Alert, } from 'react-native'
+import GameScreen from './screens/GameScreen';
 import LoadingScreen from './screens/LoadingScreen'
 import 'react-native-gesture-handler';
+
+
 export default function App() {
 
   return (
@@ -11,6 +14,8 @@ export default function App() {
     </View>
   )
 }
+
+
 
 const styles = StyleSheet.create({
   container: {

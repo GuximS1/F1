@@ -3,18 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, Button } from 'react-native';
 
 const GameScreen = () => {
+
     const [isOn1, setIsOn1] = useState(0);
-    const [isAvailable1, setIsAvailable1] = useState(true);
     const [myTitle, setMyTitle] = useState("PRESS TO START");
-    const availableHandler1 = () => {
-        setIsAvailable1(false);
-    }
+
     const Hello = <View style={styles.button}><Button title="Start Game" onPress={() => availableHandler()} /></View>;
     const message1 = () => {
         setMyTitle("LIGHTS OUT");
         setIsOn1(isOn1 + 1);
     }
-
     return (
         <View style={styles.container}>
             <Image source={require('../assets/redbackground.jpg')} resizeMode="cover" style={styles.image} />
@@ -31,6 +28,7 @@ const GameScreen = () => {
             <View style={styles.btn}>
                 <Button title={myTitle} onPress={() => { setTimeout(message1, 0); }} />
             </View>
+
         </View>
     );
 }
@@ -44,7 +42,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         position: 'absolute',
-
     },
     img: {
         resizeMode: 'contain',

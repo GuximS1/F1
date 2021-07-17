@@ -88,7 +88,11 @@ const LoadingScreen = (props) => {
         );
     }
     else {
-        return (<GameScreen />)
+        return (
+            <View style={styles.container}>
+                <GameScreen />
+                <Button title="Go Back" onPress={() => { setIsAvailable(true) }} />
+            </View>)
     }
 }
 const styles = StyleSheet.create({
