@@ -1,6 +1,8 @@
 /* eslint-disable */
 import React, { useState } from 'react'
-import { StyleSheet, View, Image, Text, Alert, Button, BackHandler, Modal } from 'react-native'
+import { StyleSheet, View, Image, Text, Alert, Button, BackHandler, Modal, TouchableOpacity } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
+import { AntDesign } from '@expo/vector-icons';
 
 import GameScreen from './GameScreen';
 
@@ -91,8 +93,14 @@ const LoadingScreen = (props) => {
         return (
             <View style={styles.container}>
                 <GameScreen />
-                <Button title="Go Back" onPress={() => { setIsAvailable(true) }} />
-            </View>)
+                <View style={styles.backView}>
+                    <TouchableOpacity style={styles.goBack} onPress={() => { setIsAvailable(true) }}>
+                        <AntDesign style={styles.icon} name="back" size={24} color="black" />
+                        <Text>back</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        )
     }
 }
 const styles = StyleSheet.create({
@@ -241,6 +249,23 @@ const styles = StyleSheet.create({
         textAlign: 'justify',
         fontSize: 18,
         padding: 2,
+    },
+    goBack: {
+        width: 30,
+        height: 30,
+    },
+    icon: {
+        borderColor: 'white',
+        borderWidth: 1,
+        borderRadius: 2,
+        backgroundColor: 'green',
+        width: 30,
+        height: 30,
+    },
+    backView: {
+        position: 'absolute',
+        paddingBottom: 650,
+        paddingRight: 340,
     }
 
 })
