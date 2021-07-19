@@ -94,7 +94,7 @@ const LoadingScreen = (props) => {
             <View style={styles.container}>
                 <GameScreen />
                 <View style={styles.backView}>
-                    <TouchableOpacity style={styles.goBack} onPress={() => { setIsAvailable(true) }}>
+                    <TouchableOpacity onPress={() => { setIsAvailable(true) }}>
                         <AntDesign style={styles.icon} name="back" size={24} color="black" />
                         <Text>back</Text>
                     </TouchableOpacity>
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding: 4,
         justifyContent: 'center',
-        paddingTop: 700,
+        paddingTop: 650,
         position: 'absolute'
     },
     alertIconStyle: {
@@ -264,7 +264,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         paddingBottom: 650,
         paddingRight: 340,
-    }
+    },
+
 
 })
 
