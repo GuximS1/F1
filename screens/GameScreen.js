@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, Button } from 'react-native';
+import MyStopwatch from './MyStopwatch';
 
 const GameScreen = () => {
 
@@ -23,12 +24,9 @@ const GameScreen = () => {
                 {isOn1 == 4 && <Image source={require('../assets/b4.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
                 {isOn1 == 5 && <Image source={require('../assets/b5.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
             </View>
-            <Text style={styles.time}>0.00 ms</Text>
-            <View style={styles.btn}>
-                {trueOrFalse && <Button title="Press to start" onPress={() => { setTimeout(message1, 0); setTrueOrFalse(false) }} />}
-                {!trueOrFalse && <Button title="Lights out" onPress={() => { setTrueOrFalse(true); setIsOn1(0) }} />}
+            <View style={styles.stopwatch}>
+                <MyStopwatch />
             </View>
-
         </View>
     );
 }
@@ -79,7 +77,9 @@ const styles = StyleSheet.create({
         width: '80%',
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    stopwatch: {
+        paddingTop: 130,
     }
-
 })
 export default GameScreen;
