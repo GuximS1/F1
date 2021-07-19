@@ -192,6 +192,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#484048',
         padding: 4,
+        paddingBottom: 250,
     },
     topPart: {
         flex: 0.5,
@@ -217,7 +218,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding: 4,
         justifyContent: 'center',
-        paddingBottom: 15,
+        paddingTop: 700,
+        position: 'absolute'
     },
     alertIconStyle: {
         height: 40,
@@ -249,10 +251,6 @@ const styles = StyleSheet.create({
         textAlign: 'justify',
         fontSize: 18,
         padding: 2,
-    },
-    goBack: {
-        width: 30,
-        height: 30,
     },
     icon: {
         borderColor: 'white',

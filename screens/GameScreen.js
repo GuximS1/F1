@@ -26,7 +26,8 @@ const GameScreen = () => {
             </View>
             <Text style={styles.time}>0.00 ms</Text>
             <View style={styles.btn}>
-                <Button title={myTitle} onPress={() => { setTimeout(message1, 0); }} />
+                {(isOn1 == 0 || isOn1 > 5) && <Button title="Press to start" onPress={() => { setTimeout(message1, 0); }} />}
+                {(isOn1 != 0 && isOn1 <= 5) && <Button title="Lights out" />}
             </View>
 
         </View>
