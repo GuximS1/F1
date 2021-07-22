@@ -1,19 +1,22 @@
 /* eslint-disable */
 import React, { useState } from 'react';
 
-// import all the components we are going to use
 import {
     SafeAreaView,
     StyleSheet,
     Text,
     View,
     TouchableHighlight,
+    Image
 } from 'react-native';
-
-// importing library to use Stopwatch and Timer
 import { Stopwatch } from 'react-native-stopwatch-timer';
 
 const MyStopwatch = () => {
+
+    const [isOn1, setIsOn1] = useState(0);
+    const message1 = () => {
+        setIsOn1(isOn1 + 1);
+    }
 
     const [isStopwatchStart, setIsStopwatchStart] = useState(false);
 
@@ -23,11 +26,19 @@ const MyStopwatch = () => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>
+                <View style={styles.big}>
+                    <Image source={require('../assets/no1.png')} style={styles.img} />
+                    {isOn1 == 1 && <Image source={require('../assets/b1.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
+                    {isOn1 == 2 && <Image source={require('../assets/b2.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
+                    {isOn1 == 3 && <Image source={require('../assets/b3.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
+                    {isOn1 == 4 && <Image source={require('../assets/b4.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
+                    {isOn1 == 5 && <Image source={require('../assets/b5.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
+                </View>
                 <View style={styles.sectionStyle}>
                     <Stopwatch
                         laps
                         msecs
-                        start={isStopwatchStart}
+                        start={isOn1 > 5 && isStopwatchStart}
                         // To start
                         reset={resetStopwatch}
                         // To reset
@@ -41,6 +52,7 @@ const MyStopwatch = () => {
                         onPress={() => {
                             setIsStopwatchStart(!isStopwatchStart);
                             setResetStopwatch(false);
+                            setTimeout(message1, 0);
                         }}>
                         <Text style={styles.buttonText}>
                             {!isStopwatchStart ? 'START' : 'STOP'}
@@ -77,7 +89,8 @@ const styles = StyleSheet.create({
     },
     sectionStyle: {
         flex: 1,
-        marginTop: 32,
+        position: 'absolute',
+        paddingTop: 720,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -85,6 +98,23 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginTop: 10,
     },
+    img: {
+        resizeMode: 'contain',
+        width: 900,
+        marginLeft: 50,
+        marginTop: 40,
+    },
+    balls: {
+        position: 'absolute',
+        width: 831,
+        height: 511,
+        marginLeft: 84.6,
+        marginTop: 120,
+    },
+    big: {
+        marginTop: 0,
+        marginRight: 24,
+    }
 });
 
 const options = {

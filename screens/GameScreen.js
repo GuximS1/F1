@@ -5,25 +5,12 @@ import MyStopwatch from './MyStopwatch';
 
 const GameScreen = () => {
 
-    const [isOn1, setIsOn1] = useState(0);
-    const [trueOrFalse, setTrueOrFalse] = useState(true);
 
-    const Hello = <View style={styles.button}><Button title="Start Game" onPress={() => availableHandler()} /></View>;
-    const message1 = () => {
-        setIsOn1(isOn1 + 1);
-    }
     return (
         <View style={styles.container}>
             <Image source={require('../assets/redbackground.jpg')} resizeMode="cover" style={styles.image} />
             <View style={styles.timing}><Text style={styles.bestTime}>Best Time</Text></View>
-            <View style={styles.big}>
-                <Image source={require('../assets/no1.png')} style={styles.img} />
-                {isOn1 == 1 && <Image source={require('../assets/b1.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
-                {isOn1 == 2 && <Image source={require('../assets/b2.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
-                {isOn1 == 3 && <Image source={require('../assets/b3.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
-                {isOn1 == 4 && <Image source={require('../assets/b4.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
-                {isOn1 == 5 && <Image source={require('../assets/b5.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
-            </View>
+
             <View style={styles.stopwatch}>
                 <MyStopwatch />
             </View>
@@ -41,12 +28,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         position: 'absolute',
     },
-    img: {
-        resizeMode: 'contain',
-        width: 900,
-        marginLeft: 50,
-        marginTop: 40,
-    },
     time: {
         fontSize: 40,
         fontWeight: 'bold',
@@ -57,14 +38,6 @@ const styles = StyleSheet.create({
     btn: {
         paddingBottom: 50,
         width: 300,
-    },
-    balls: {
-        position: 'absolute',
-        width: 831,
-        height: 511,
-        marginLeft: 84.6,
-        marginTop: 120,
-
     },
     bestTime: {
         color: 'white',
