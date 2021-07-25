@@ -23,6 +23,7 @@ const MyStopwatch = () => {
     const [startStop, setStartStop] = useState(0);
     const [resetStopwatch, setResetStopwatch] = useState(false);
     var timeTotal = 0;
+    var textMode = "START";
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>
@@ -47,7 +48,7 @@ const MyStopwatch = () => {
                         getTime={(time) => {
                             // time = time.split(':');
                             //time = (((Number(time[0]) * 3600) + (Number(time[1]) * 60) + Number(time[2])) * 1000) + Number(time[3]);
-                            console.log(time);
+                            // console.log(time);
                             timeTotal = time;
                         }}
                     />
@@ -65,7 +66,8 @@ const MyStopwatch = () => {
                             }
                         }}>
                         <Text style={styles.buttonText}>
-                            {!isStopwatchStart ? 'START' : 'STOP'}
+                            {textMode
+                                = (!isStopwatchStart ? 'START' : 'STOP')}
                         </Text>
                     </TouchableHighlight>
                     <TouchableHighlight
