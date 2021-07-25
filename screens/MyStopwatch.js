@@ -58,7 +58,10 @@ const MyStopwatch = () => {
                             setTimeout(message1, 0);
                             setStartStop(startStop + 1);
                             if (isStopwatchStart) {
-                                Alert.alert("My Reaction Time", "This is my time: " + timeTotal);
+                                if (timeTotal === "00:00:00:000")
+                                    Alert.alert("DNF");
+                                else
+                                    Alert.alert("My Reaction Time", "This is my time: " + timeTotal + ".");
                             }
                         }}>
                         <Text style={styles.buttonText}>
