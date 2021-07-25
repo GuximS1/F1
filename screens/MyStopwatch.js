@@ -7,7 +7,8 @@ import {
     Text,
     View,
     TouchableHighlight,
-    Image
+    Image,
+    Alert
 } from 'react-native';
 import { Stopwatch } from 'react-native-stopwatch-timer';
 
@@ -19,10 +20,9 @@ const MyStopwatch = () => {
     }
 
     const [isStopwatchStart, setIsStopwatchStart] = useState(false);
-
-
+    const [startStop, setStartStop] = useState(0);
     const [resetStopwatch, setResetStopwatch] = useState(false);
-
+    var timeTotal = 0;
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>
@@ -45,7 +45,10 @@ const MyStopwatch = () => {
                         options={options}
                         // Options for the styling
                         getTime={(time) => {
+                            // time = time.split(':');
+                            //time = (((Number(time[0]) * 3600) + (Number(time[1]) * 60) + Number(time[2])) * 1000) + Number(time[3]);
                             console.log(time);
+                            timeTotal = time;
                         }}
                     />
                     <TouchableHighlight
@@ -53,6 +56,10 @@ const MyStopwatch = () => {
                             setIsStopwatchStart(!isStopwatchStart);
                             setResetStopwatch(false);
                             setTimeout(message1, 0);
+                            setStartStop(startStop + 1);
+                            if (isStopwatchStart) {
+                                Alert.alert("My Reaction Time", "This is my time: " + timeTotal);
+                            }
                         }}>
                         <Text style={styles.buttonText}>
                             {!isStopwatchStart ? 'START' : 'STOP'}
