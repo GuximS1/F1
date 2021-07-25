@@ -62,6 +62,7 @@ const MyStopwatch = () => {
                         onPress={() => {
                             setIsStopwatchStart(false);
                             setResetStopwatch(true);
+                            setIsOn1(0);
                         }}>
                         <Text style={styles.buttonText}>RESET</Text>
                     </TouchableHighlight>
