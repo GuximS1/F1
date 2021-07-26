@@ -22,6 +22,7 @@ const MyStopwatch = () => {
     const [isStopwatchStart, setIsStopwatchStart] = useState(false);
     const [startStop, setStartStop] = useState(0);
     const [resetStopwatch, setResetStopwatch] = useState(false);
+    const [test, myTest] = useState(false);
     var timeTotal = 0;
     var textMode = "START";
     return (
@@ -29,11 +30,11 @@ const MyStopwatch = () => {
             <View style={styles.container}>
                 <View style={styles.big}>
                     <Image source={require('../assets/no1.png')} style={styles.img} />
-                    {isOn1 == 1 && <Image source={require('../assets/b1.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
-                    {isOn1 == 2 && <Image source={require('../assets/b2.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
-                    {isOn1 == 3 && <Image source={require('../assets/b3.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
-                    {isOn1 == 4 && <Image source={require('../assets/b4.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
-                    {isOn1 == 5 && <Image source={require('../assets/b5.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
+                    {(isOn1 === 1 && test) && <Image source={require('../assets/b1.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
+                    {(isOn1 === 2 && test) && <Image source={require('../assets/b2.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
+                    {(isOn1 === 3 && test) && <Image source={require('../assets/b3.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
+                    {(isOn1 === 4 && test) && <Image source={require('../assets/b4.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
+                    {(isOn1 === 5 && test) && <Image source={require('../assets/b5.png')} style={styles.balls} onLoad={() => { setTimeout(message1, 1000); }} />}
                 </View>
                 <View style={styles.sectionStyle}>
                     <Stopwatch
@@ -54,15 +55,21 @@ const MyStopwatch = () => {
                     />
                     <TouchableHighlight
                         onPress={() => {
+                            myTest(true);
                             setIsStopwatchStart(!isStopwatchStart);
                             setResetStopwatch(false);
                             setTimeout(message1, 0);
                             setStartStop(startStop + 1);
                             if (isStopwatchStart) {
-                                if (timeTotal === "00:00:00:000")
+                                if (timeTotal === "00:00:00:000") {
                                     Alert.alert("DNF");
-                                else
+                                    myTest(false);
+                                    setIsOn1(0);
+                                }
+                                else {
                                     Alert.alert("My Reaction Time", "This is my time: " + timeTotal + ".");
+                                    setIsOn1(0);
+                                }
                             }
                         }}>
                         <Text style={styles.buttonText}>
