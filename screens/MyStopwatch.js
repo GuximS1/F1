@@ -9,7 +9,8 @@ import {
     TouchableHighlight,
     Image,
     Alert,
-    Modal
+    Modal,
+    TouchableOpacity
 } from 'react-native';
 import { Stopwatch } from 'react-native-stopwatch-timer';
 
@@ -56,7 +57,7 @@ const MyStopwatch = () => {
                             timeTotal = time;
                         }}
                     />
-                    <TouchableHighlight
+                    <TouchableOpacity
                         onPress={() => {
                             myTest(true);
                             setIsStopwatchStart(!isStopwatchStart);
@@ -87,22 +88,23 @@ const MyStopwatch = () => {
                             {textMode
                                 = (!isStopwatchStart ? 'START' : 'STOP')}
                         </Text>
-                    </TouchableHighlight>
+                    </TouchableOpacity>
 
                 </View>
                 <Modal visible={modalTrue}>
                     <View style={styles.mainContainer}>
+                        {DNF === true && <View style={{ position: 'absolute', paddingBottom: 550, }}><Text style={{ fontSize: 40, color: 'white', fontWeight: 'bold' }}>False Start!</Text></View>}
                         {DNF === true && <Image source={require('../assets/Disqualified.png')} style={styles.dnf} />}
-                        <View style={styles.photo}><Text style={styles.textPhoto}>You got disqualified because you started before the lights go out</Text></View>
-                        <TouchableHighlight
+                        {DNF === true && <View style={styles.photo}><Text style={styles.textPhoto}>You got disqualified because you started before the lights go out!</Text></View>}
+                        <TouchableOpacity
                             onPress={() => {
                                 setIsStopwatchStart(false);
                                 setResetStopwatch(true);
                                 setIsOn1(0);
                                 setModalTrue(false);
                             }}>
-                            <Text style={styles.buttonText}>RESET</Text>
-                        </TouchableHighlight>
+                            <Text style={styles.buttonText}>Try Again</Text>
+                        </TouchableOpacity>
                     </View>
                 </Modal>
             </View>
@@ -136,6 +138,12 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 30,
         marginTop: 10,
+        width: '50%',
+        borderWidth: 1,
+        textAlign: 'center',
+        backgroundColor: 'white',
+        fontWeight: 'bold'
+
     },
     img: {
         resizeMode: 'contain',
@@ -170,8 +178,20 @@ const styles = StyleSheet.create({
         width: '90%',
         marginTop: 250,
     },
-    photo: { width: '90%', backgroundColor: 'red', borderWidth: 2, borderRadius: 10 },
-    textPhoto: { textAlign: 'center', color: 'white', fontWeight: 'bold', fontSize: 20, },
+    photo: {
+        width: '90%',
+        backgroundColor: 'red',
+        borderWidth: 2,
+        borderRadius: 10
+    },
+    textPhoto: {
+        textAlign: 'center',
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 20,
+        paddingBottom: 10,
+
+    },
 
 });
 
