@@ -108,7 +108,7 @@ const MyStopwatch = () => {
                                 setIsOn1(0);
                                 setModalTrue(false);
                             }}>
-                            <Text style={styles.buttonText}>Try Again</Text>
+                            <Text style={styles.buttonText}> Try Again </Text>
                         </TouchableOpacity>
                     </View>
                 </Modal>
