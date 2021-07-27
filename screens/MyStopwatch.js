@@ -24,6 +24,7 @@ const MyStopwatch = () => {
     const [startStop, setStartStop] = useState(0);
     const [resetStopwatch, setResetStopwatch] = useState(false);
     const [modalTrue, setModalTrue] = useState(false);
+    const [DNF, setDNF] = useState(true);
     const [test, myTest] = useState(false);
     var timeTotal = 0;
     var textMode = "START";
@@ -63,17 +64,20 @@ const MyStopwatch = () => {
                             setTimeout(message1, 0);
                             setStartStop(startStop + 1);
                             if (isStopwatchStart) {
-                                /*
+
                                 if (timeTotal === "00:00:00:000") {
+                                    /*
                                     Alert.alert("DNF");
                                     myTest(false);
-                                    setIsOn1(0);
+                                    setIsOn1(0);*/
+                                    setDNF(true);
                                 }
-                                else {
+                                else {/*
                                     Alert.alert("My Reaction Time", "This is my time: " + timeTotal + ".");
-                                    setIsOn1(0);
+                                    setIsOn1(0);*/
+                                    setDNF(false);
                                 }
-                                */
+
                                 myTest(false);
                                 setIsOn1(0);
                                 setModalTrue(true);
@@ -88,6 +92,8 @@ const MyStopwatch = () => {
                 </View>
                 <Modal visible={modalTrue}>
                     <View style={styles.mainContainer}>
+                        {DNF === true && <Image source={require('../assets/Disqualified.png')} style={styles.dnf} />}
+                        <View style={styles.photo}><Text style={styles.textPhoto}>You got disqualified because you started before the lights go out</Text></View>
                         <TouchableHighlight
                             onPress={() => {
                                 setIsStopwatchStart(false);
@@ -159,6 +165,14 @@ const styles = StyleSheet.create({
         padding: 4,
         paddingBottom: 250,
     },
+    dnf: {
+        resizeMode: 'contain',
+        width: '90%',
+        marginTop: 250,
+    },
+    photo: { width: '90%', backgroundColor: 'red', borderWidth: 2, borderRadius: 10 },
+    textPhoto: { textAlign: 'center', color: 'white', fontWeight: 'bold', fontSize: 20, },
+
 });
 
 const options = {
