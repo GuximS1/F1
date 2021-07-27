@@ -20,7 +20,7 @@ const MyStopwatch = () => {
     const message1 = () => {
         setIsOn1(isOn1 + 1);
     }
-
+    const [timing, myTiming] = useState(null);
     const [isStopwatchStart, setIsStopwatchStart] = useState(false);
     const [startStop, setStartStop] = useState(0);
     const [resetStopwatch, setResetStopwatch] = useState(false);
@@ -53,8 +53,8 @@ const MyStopwatch = () => {
                         getTime={(time) => {
                             // time = time.split(':');
                             //time = (((Number(time[0]) * 3600) + (Number(time[1]) * 60) + Number(time[2])) * 1000) + Number(time[3]);
-                            // console.log(time);
                             timeTotal = time;
+                            console.log(timeTotal);
                         }}
                     />
                     <TouchableOpacity
@@ -77,6 +77,7 @@ const MyStopwatch = () => {
                                     Alert.alert("My Reaction Time", "This is my time: " + timeTotal + ".");
                                     setIsOn1(0);*/
                                     setDNF(false);
+                                    myTiming(timeTotal);
                                 }
 
                                 myTest(false);
@@ -96,6 +97,10 @@ const MyStopwatch = () => {
                         {DNF === true && <View style={{ position: 'absolute', paddingBottom: 550, }}><Text style={{ fontSize: 40, color: 'white', fontWeight: 'bold' }}>False Start!</Text></View>}
                         {DNF === true && <Image source={require('../assets/Disqualified.png')} style={styles.dnf} />}
                         {DNF === true && <View style={styles.photo}><Text style={styles.textPhoto}>You got disqualified because you started before the lights go out!</Text></View>}
+                        {DNF === false && <Image source={require('../assets/well-done.png')} style={{ marginTop: 170, }} />}
+                        {DNF === false && <View><Text style={{ fontSize: 40, color: 'white', fontWeight: 'bold' }}>Your time reaction:</Text></View>}
+                        {DNF === false && <View style={{ borderWidth: 2, backgroundColor: 'violet', borderRadius: 5, marginTop: 10, }}><Text style={{ fontSize: 30 }}>{"  " + timing + "  "}</Text></View>}
+                        {DNF === false && <Image source={require('../assets/flag.png')} style={{ resizeMode: 'contain', width: "90%" }} />}
                         <TouchableOpacity
                             onPress={() => {
                                 setIsStopwatchStart(false);
