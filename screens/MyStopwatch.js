@@ -8,7 +8,8 @@ import {
     View,
     TouchableHighlight,
     Image,
-    Alert
+    Alert,
+    Modal
 } from 'react-native';
 import { Stopwatch } from 'react-native-stopwatch-timer';
 
@@ -22,6 +23,7 @@ const MyStopwatch = () => {
     const [isStopwatchStart, setIsStopwatchStart] = useState(false);
     const [startStop, setStartStop] = useState(0);
     const [resetStopwatch, setResetStopwatch] = useState(false);
+    const [modalTrue, setModalTrue] = useState(false);
     const [test, myTest] = useState(false);
     var timeTotal = 0;
     var textMode = "START";
@@ -61,6 +63,7 @@ const MyStopwatch = () => {
                             setTimeout(message1, 0);
                             setStartStop(startStop + 1);
                             if (isStopwatchStart) {
+                                /*
                                 if (timeTotal === "00:00:00:000") {
                                     Alert.alert("DNF");
                                     myTest(false);
@@ -70,6 +73,10 @@ const MyStopwatch = () => {
                                     Alert.alert("My Reaction Time", "This is my time: " + timeTotal + ".");
                                     setIsOn1(0);
                                 }
+                                */
+                                myTest(false);
+                                setIsOn1(0);
+                                setModalTrue(true);
                             }
                         }}>
                         <Text style={styles.buttonText}>
@@ -77,15 +84,21 @@ const MyStopwatch = () => {
                                 = (!isStopwatchStart ? 'START' : 'STOP')}
                         </Text>
                     </TouchableHighlight>
-                    <TouchableHighlight
-                        onPress={() => {
-                            setIsStopwatchStart(false);
-                            setResetStopwatch(true);
-                            setIsOn1(0);
-                        }}>
-                        <Text style={styles.buttonText}>RESET</Text>
-                    </TouchableHighlight>
+
                 </View>
+                <Modal visible={modalTrue}>
+                    <View style={styles.mainContainer}>
+                        <TouchableHighlight
+                            onPress={() => {
+                                setIsStopwatchStart(false);
+                                setResetStopwatch(true);
+                                setIsOn1(0);
+                                setModalTrue(false);
+                            }}>
+                            <Text style={styles.buttonText}>RESET</Text>
+                        </TouchableHighlight>
+                    </View>
+                </Modal>
             </View>
         </SafeAreaView>
     );
@@ -115,7 +128,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     buttonText: {
-        fontSize: 20,
+        fontSize: 30,
         marginTop: 10,
     },
     img: {
@@ -134,7 +147,18 @@ const styles = StyleSheet.create({
     big: {
         marginTop: 0,
         marginRight: 24,
-    }
+    },
+    mainContainer: {
+        position: 'absolute',
+        flexDirection: 'column',
+        height: '100%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#00505083',
+        padding: 4,
+        paddingBottom: 250,
+    },
 });
 
 const options = {
