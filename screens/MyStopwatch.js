@@ -52,7 +52,7 @@ const MyStopwatch = () => {
     const [DNF, setDNF] = useState(true);
     const [test, myTest] = useState(false);
     var timeTotal = 0;
-    var textMode = 'START';
+    var textMode = ' START ';
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>
@@ -90,6 +90,7 @@ const MyStopwatch = () => {
                             setStartStop(startStop + 1);
                             if (isStopwatchStart) {
                                 setSound(null);
+                                setIsOn1(0);
                                 if (timeTotal === "00:00:00:000") {
                                     /*
                                     Alert.alert("DNF");
@@ -113,7 +114,7 @@ const MyStopwatch = () => {
                         }}>
                         <Text style={styles.buttonText}>
                             {textMode
-                                = (!isStopwatchStart ? 'START' : 'STOP')}
+                                = (!isStopwatchStart ? ' START ' : ' STOP ')}
                         </Text>
                     </TouchableOpacity>
 
@@ -133,6 +134,7 @@ const MyStopwatch = () => {
                                 setResetStopwatch(true);
                                 setIsOn1(0);
                                 setModalTrue(false);
+                                setSound(null);
                             }}>
                             <Text style={styles.buttonText}> Try Again </Text>
                         </TouchableOpacity>
