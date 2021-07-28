@@ -143,7 +143,6 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 30,
         marginTop: 10,
-        width: '50%',
         borderWidth: 1,
         textAlign: 'center',
         backgroundColor: 'white',
