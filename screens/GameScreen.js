@@ -7,6 +7,7 @@ const GameScreen = () => {
     return (
         <View style={styles.container}>
             <Image source={require('../assets/redbackground.jpg')} resizeMode="cover" style={styles.image} />
+            <View><Image source={require('../assets/F1-logo.png')} resizeMode="cover" style={{ resizeMode: 'contain', position: 'absolute', paddingTop: 200, bottom: 140, right: -170 }} /></View>
             <View style={styles.stopwatch}>
                 <MyStopwatch />
             </View>
