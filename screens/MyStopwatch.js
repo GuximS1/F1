@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     SafeAreaView,
     StyleSheet,
@@ -12,13 +12,38 @@ import {
     TouchableOpacity
 } from 'react-native';
 import { Stopwatch } from 'react-native-stopwatch-timer';
-
+import { Audio } from 'expo-av';
 const MyStopwatch = () => {
+
+    const [sound, setSound] = useState();
+
+    async function playSound() {
+
+        // console.log('Loading Sound');
+        const { sound } = await Audio.Sound.createAsync(
+            require('../audio/F1LightsOut.mp3')
+        );
+        setSound(sound);
+
+        // console.log('Playing Sound');
+        await sound.playAsync();
+
+    }
+
+    useEffect(() => {
+        return sound
+            ? () => {
+                // console.log('Unloading Sound');
+                sound.unloadAsync();
+            }
+            : undefined;
+    }, [sound]);
 
     const [isOn1, setIsOn1] = useState(0);
     const message1 = () => {
         setIsOn1(isOn1 + 1);
     }
+    const [mySound, setMySound] = useState(false);
     const [timing, myTiming] = useState(null);
     const [isStopwatchStart, setIsStopwatchStart] = useState(false);
     const [startStop, setStartStop] = useState(0);
@@ -27,8 +52,7 @@ const MyStopwatch = () => {
     const [DNF, setDNF] = useState(true);
     const [test, myTest] = useState(false);
     var timeTotal = 0;
-    var textMode = "START";
-    var myResults = [];
+    var textMode = 'START';
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>
@@ -54,7 +78,7 @@ const MyStopwatch = () => {
                             // time = time.split(':');
                             //time = (((Number(time[0]) * 3600) + (Number(time[1]) * 60) + Number(time[2])) * 1000) + Number(time[3]);
                             timeTotal = time;
-                            console.log(timeTotal);
+                            //  console.log(timeTotal);
                         }}
                     />
                     <TouchableOpacity
@@ -65,7 +89,7 @@ const MyStopwatch = () => {
                             setTimeout(message1, 0);
                             setStartStop(startStop + 1);
                             if (isStopwatchStart) {
-
+                                setSound(null);
                                 if (timeTotal === "00:00:00:000") {
                                     /*
                                     Alert.alert("DNF");
@@ -78,11 +102,13 @@ const MyStopwatch = () => {
                                     setIsOn1(0);*/
                                     setDNF(false);
                                     myTiming(timeTotal);
-                                    myResults.push(timeTotal);
                                 }
                                 myTest(false);
                                 setIsOn1(0);
                                 setModalTrue(true);
+                            }
+                            else {
+                                playSound();
                             }
                         }}>
                         <Text style={styles.buttonText}>
