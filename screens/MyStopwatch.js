@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React, { useState } from 'react';
-
 import {
     SafeAreaView,
     StyleSheet,
@@ -29,6 +28,7 @@ const MyStopwatch = () => {
     const [test, myTest] = useState(false);
     var timeTotal = 0;
     var textMode = "START";
+    var myResults = [];
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>
@@ -78,8 +78,8 @@ const MyStopwatch = () => {
                                     setIsOn1(0);*/
                                     setDNF(false);
                                     myTiming(timeTotal);
+                                    myResults.push(timeTotal);
                                 }
-
                                 myTest(false);
                                 setIsOn1(0);
                                 setModalTrue(true);

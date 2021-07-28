@@ -262,7 +262,7 @@ const styles = StyleSheet.create({
     },
     backView: {
         position: 'absolute',
-        paddingBottom: 650,
+        paddingBottom: 600,
         paddingRight: 340,
     },
 

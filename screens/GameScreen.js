@@ -4,13 +4,9 @@ import { View, Text, StyleSheet, Image, Button } from 'react-native';
 import MyStopwatch from './MyStopwatch';
 
 const GameScreen = () => {
-
-
     return (
         <View style={styles.container}>
             <Image source={require('../assets/redbackground.jpg')} resizeMode="cover" style={styles.image} />
-            <View style={styles.timing}><Text style={styles.bestTime}>Best Time</Text></View>
-
             <View style={styles.stopwatch}>
                 <MyStopwatch />
             </View>
